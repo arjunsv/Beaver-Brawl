@@ -243,7 +243,7 @@ def main():
             player.portal_up = True
 
         if time.time() - last_mushroom > 15 and not items:
-            mushroom = Item("mushroom.png")
+            mushroom = Item("images/mushroom.png")
             rand = random.randint(0,1)
             if rand == 0:
                 mushroom.rect.x = 750

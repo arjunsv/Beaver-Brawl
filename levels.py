@@ -65,7 +65,7 @@ class Level_01(Level):
     def __init__(self, player):
         Level.__init__(self, player)
 
-        self.background = pygame.transform.scale(pygame.image.load("river.png"),(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)).convert_alpha()
+        self.background = pygame.transform.scale(pygame.image.load("images/river.png"),(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)).convert_alpha()
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -2500
 

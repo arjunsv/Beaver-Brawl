@@ -15,8 +15,8 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self, health, player):
         pygame.sprite.Sprite.__init__(self)
-        self.heart_img = pygame.image.load("heart.png").convert_alpha()
-        self.image = pygame.image.load("beaver.png").convert_alpha()
+        self.heart_img = pygame.image.load("images/heart.png").convert_alpha()
+        self.image = pygame.image.load("images/beaver.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (70,70))
         self.image_original = self.image
         self.image_flipped = pygame.transform.flip(self.image, True, False)
@@ -113,9 +113,9 @@ class Player(pygame.sprite.Sprite):
     def update_portal(self, screen, player):
         offset = 0
         if self.portal_up:
-            portal = pygame.transform.scale(pygame.image.load("portal0.png").convert_alpha(), (40, 40))
+            portal = pygame.transform.scale(pygame.image.load("images/portal0.png").convert_alpha(), (40, 40))
         else:
-            portal = pygame.transform.scale(pygame.image.load("portal_gray.png").convert_alpha(), (40, 40))
+            portal = pygame.transform.scale(pygame.image.load("images/portal_gray.png").convert_alpha(), (40, 40))
 
         if player == 2:
             start = 40
@@ -149,7 +149,7 @@ class Stick(Projectile):
     def __init__(self, direction):
         super().__init__(direction)
         self.index = 0
-        self.image = pygame.transform.scale(pygame.image.load("stick.png").convert_alpha(), (50, 50))
+        self.image = pygame.transform.scale(pygame.image.load("images/stick.png").convert_alpha(), (50, 50))
         self.rect = self.image.get_rect()
         self.rect.height = self.rect.height*0.3
         self.rect.width = self.rect.width*0.5
@@ -170,7 +170,7 @@ class MegaStick(Projectile):
     def __init__(self, direction):
         super().__init__(direction)
         self.index = 0
-        self.image = pygame.transform.scale(pygame.image.load("log.png").convert_alpha(), (70, 70))
+        self.image = pygame.transform.scale(pygame.image.load("images/log.png").convert_alpha(), (70, 70))
         self.rect = self.image.get_rect()
         self.rect.y += self.rect.height + 300
         self.rect.x += self.rect.width
@@ -187,7 +187,7 @@ class MegaStick(Projectile):
 class Shuriken(Projectile):
     image_list = []
     for i in range(3):
-        scaled_image = pygame.transform.scale(pygame.image.load("shuriken" + str(i) + ".png"), (75, 75)) 
+        scaled_image = pygame.transform.scale(pygame.image.load("images/shuriken" + str(i) + ".png"), (75, 75)) 
         image_list.append(scaled_image)
     def __init__(self, direction, player):
         super().__init__(direction)
@@ -226,10 +226,10 @@ class Portal(pygame.sprite.Sprite):
     image_list = []
     wide_image_list = []
     for i in range(8):
-        scaled_image = pygame.transform.scale(pygame.image.load("portal" + str(i) + ".png"), (100, 200)) 
+        scaled_image = pygame.transform.scale(pygame.image.load("images/portal" + str(i) + ".png"), (100, 200)) 
         image_list.append(scaled_image)
     for i in range(8):
-        scaled_image = pygame.transform.scale(pygame.image.load("portal" + str(i) + ".png"), (200, 100)) 
+        scaled_image = pygame.transform.scale(pygame.image.load("images/portal" + str(i) + ".png"), (200, 100)) 
         wide_image_list.append(scaled_image)
     def __init__(self, player, other_player, direction, is_start, duration=5):
         super().__init__()
