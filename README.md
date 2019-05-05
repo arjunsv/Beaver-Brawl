@@ -24,7 +24,7 @@ Player 2 Controls: `MOVEMENT: ARROW KEYS; ATTACK: SPACE, PORTAL: SHIFT`
 
 ### Gameplay Screenshots
 
-** Gameplay Trailer: [Watch on YouTube!](https://www.youtube.com/watch?v=p5R-nFy6K54&feature=youtu.be) **
+**Gameplay Trailer: [Watch on YouTube!](https://www.youtube.com/watch?v=p5R-nFy6K54&feature=youtu.be)**
 
 ![bb-gameplay1](https://i.imgur.com/NfXhFp2.jpg)
 
