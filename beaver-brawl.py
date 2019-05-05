@@ -344,7 +344,7 @@ def main():
             pygame.quit()
 
         if player2.lives <= 0:
-            pygame.quite()
+            pygame.quit()
 
         clock.tick(60)
         pygame.display.flip()
