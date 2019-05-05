@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
         self.lives = 3
         self.is_knocked_back = False
         self.knockback_ticks = 15
-        self.can_portal = False
+        self.can_portal = True
         self.portal_up = False
         self.speed_mul = 1
         self.speed_img = pygame.image.load("images/beaver-green.png").convert_alpha()
@@ -43,11 +43,11 @@ class Player(pygame.sprite.Sprite):
         pos = self.rect.x + self.level.world_shift
         if self.direction == "L":
             self.image = self.image_flipped
-            if self.speed_mul > 1:
+            if self.speed_mul > 1.4:
                 self.image = self.speed_img_flipped
         else:
             self.image = self.image_original
-            if self.speed_mul > 1:
+            if self.speed_mul > 1.4:
                 self.image = self.speed_img
 
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
@@ -166,7 +166,7 @@ class Stick(Projectile):
 
     def update(self):
 
-        self.rect.x += 15 * self.direction
+        self.rect.x += 20 * self.direction
 
         if self.rect.x > constants.SCREEN_WIDTH + 200 or self.rect.x < -200:
             self.kill()
