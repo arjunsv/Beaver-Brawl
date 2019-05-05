@@ -35,11 +35,11 @@ def main():
     current_level_no = 0
     current_level = level_list[current_level_no]
 
-
-
     items = pygame.sprite.Group()
+    speed_items = pygame.sprite.Group()
     
-    last_mushroom = 0
+    last_mushroom = time.time()
+    last_speed = time.time()
 
     active_sprite_list = pygame.sprite.Group()
     player_projectiles = pygame.sprite.Group()
@@ -236,10 +236,20 @@ def main():
             player2.can_portal = True
             last_mushroom = time.time()
 
-        if time.time() - player2.last_portal > 10:
+
+        if pygame.sprite.spritecollide(player, speed_items, True):
+            player.speed_mul = 1.3
+            last_speed = time.time()
+
+
+        if pygame.sprite.spritecollide(player2, speed_items, True):
+            player2.speed_mul = 1.3
+            last_speed = time.time()
+
+        if time.time() - player2.last_portal > 15:
             player2.portal_up = True
 
-        if time.time() - player.last_portal > 10:
+        if time.time() - player.last_portal > 15:
             player.portal_up = True
 
         if time.time() - last_mushroom > 15 and not items:
@@ -253,6 +263,18 @@ def main():
                 mushroom.rect.y = 530
 
             items.add(mushroom)
+
+        if time.time() - last_speed > 25 and not speed_items:
+            speed = Item("images/speed.png")
+            rand = random.randint(0,1)
+            if rand == 0:
+                speed.rect.x = 800
+                speed.rect.y = 50
+            if rand == 1:
+                speed.rect.x = 580
+                speed.rect.y = 530
+
+            speed_items.add(speed)
 
         if player.health < 0:
             player.health = 0
@@ -299,6 +321,7 @@ def main():
 
 
         items.draw(screen)
+        speed_items.draw(screen)
         player.level.update_text(screen)
 
         if player.health >= 66:
@@ -310,7 +333,7 @@ def main():
 
         if player2.health >= 66:
             player2.update_health(screen,(0, 255, 0))
-        elif player.health >= 33:
+        elif player2.health >= 33:
             player2.update_health(screen,(255, 255, 0))
         else:
             player2.update_health(screen,(255, 0, 0))

@@ -32,7 +32,10 @@ class Level():
             "      Beavers are a 'Keystone Species' because of their effects on other species.",
             "A hat craze in Europe in 15th-18th centuries created high demand for beaver fur. ",
             "Human factors such as hunting and deforestation have reduced the beaver population.",
-            "                                     The Beaver is the national animal of Canada."
+            "                                     The Beaver is the national animal of Canada.",
+            "                               The Beaver's front teeth never stop growing.      ",
+            "                  Beaver's have webbed feet which make them exceptional swimmers. "
+
         ]
 
     def update(self):

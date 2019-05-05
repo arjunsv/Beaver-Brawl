@@ -31,6 +31,10 @@ class Player(pygame.sprite.Sprite):
         self.knockback_ticks = 15
         self.can_portal = False
         self.portal_up = False
+        self.speed_mul = 1
+        self.speed_img = pygame.image.load("images/beaver-green.png").convert_alpha()
+        self.speed_img = pygame.transform.scale(self.speed_img, (70,70))
+        self.speed_img_flipped = pygame.transform.flip(self.speed_img, True, False)
 
     def update(self):
         self.calc_grav()
@@ -39,8 +43,12 @@ class Player(pygame.sprite.Sprite):
         pos = self.rect.x + self.level.world_shift
         if self.direction == "L":
             self.image = self.image_flipped
+            if self.speed_mul > 1:
+                self.image = self.speed_img_flipped
         else:
             self.image = self.image_original
+            if self.speed_mul > 1:
+                self.image = self.speed_img
 
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:
@@ -84,11 +92,11 @@ class Player(pygame.sprite.Sprite):
             self.change_y = -15
 
     def go_left(self):
-        self.change_x = -8
+        self.change_x = -8*self.speed_mul
         self.direction = "L"
 
     def go_right(self):
-        self.change_x = 8
+        self.change_x = 8*self.speed_mul
         self.direction = "R"
 
     def stop(self):
@@ -139,10 +147,10 @@ class Projectile(pygame.sprite.Sprite):
         self.rect.x += 25 * self.direction
 
         #check if we are outside the screen
-        if self.rect.x > constants.SCREEN_WIDTH or self.rect.x < 0:
+        if self.rect.x > constants.SCREEN_WIDTH + 200 or self.rect.x < -200:
             self.kill()
 
-        if self.rect.y > constants.SCREEN_HEIGHT or self.rect.y < 0:
+        if self.rect.y > constants.SCREEN_HEIGHT + 200 or self.rect.y < -200:
             self.kill()
 
 class Stick(Projectile):
@@ -160,10 +168,10 @@ class Stick(Projectile):
 
         self.rect.x += 15 * self.direction
 
-        if self.rect.x > constants.SCREEN_WIDTH or self.rect.x < 0:
+        if self.rect.x > constants.SCREEN_WIDTH + 200 or self.rect.x < -200:
             self.kill()
 
-        if self.rect.y > constants.SCREEN_HEIGHT or self.rect.y < 0:
+        if self.rect.y > constants.SCREEN_HEIGHT + 200 or self.rect.y < -200:
             self.kill()
 
 class MegaStick(Projectile):
@@ -178,10 +186,10 @@ class MegaStick(Projectile):
     def update(self):
         self.rect.y += 12
 
-        if self.rect.x > constants.SCREEN_WIDTH or self.rect.x < 0:
+        if self.rect.x > constants.SCREEN_WIDTH + 200 or self.rect.x < -200:
             self.kill()
 
-        if self.rect.y > constants.SCREEN_HEIGHT or self.rect.y < 0:
+        if self.rect.y > constants.SCREEN_HEIGHT + 200 or self.rect.y < -200:
             self.kill()
 
 class Shuriken(Projectile):
