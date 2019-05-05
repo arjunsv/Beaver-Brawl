@@ -24,6 +24,11 @@ Player 2 Controls: `MOVEMENT: ARROW KEYS; ATTACK: SPACE, PORTAL: SHIFT`
 
 ### Gameplay Screenshots
 
+![bb-gameplay1](https://i.imgur.com/NfXhFp2.jpg)
+
+![bb-gameplay2](https://i.imgur.com/1dNr0GD.png)
+
+
 
 # Educational Facts
 
